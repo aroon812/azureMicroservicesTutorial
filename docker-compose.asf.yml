@@ -1,0 +1,34 @@
+﻿version: '3.4'
+
+services:
+  customers:
+    image: microservicestutorial:ecommerceapicustomers:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+  orders:
+    image: microservicestutorial:ecommerceapiorders:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+
+  products:
+    image: microservicestutorial:ecommerceapiproducts:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+
+  search:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Services__Products=https://microcluster.westus2.cloudapp.azure.com:19081/ecommerce/api/products/
+      - Services__Customers=https://microcluster.westus2.cloudapp.azure.com:19081/ecommerce/api/customers/
+      - Services__Orders=https://microcluster.westus2.cloudapp.azure.com:19081/ecommerce/api/orders/
+    ports:
+      - "6004:80"
