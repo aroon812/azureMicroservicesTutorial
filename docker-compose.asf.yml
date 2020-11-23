@@ -27,7 +27,7 @@ services:
   search:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - Services__Products=https://microcluster.westus2.cloudapp.azure.com:19081/ecommerce/api/products/
+      - Services__Products=https://ReverseProxyNodeIPAddress:19081/applicationName/products/
       - Services__Customers=https://microcluster.westus2.cloudapp.azure.com:19081/ecommerce/api/customers/
       - Services__Orders=https://microcluster.westus2.cloudapp.azure.com:19081/ecommerce/api/orders/
     ports:
